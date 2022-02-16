@@ -6,10 +6,13 @@ import { Registration } from './components/Registration/Registration';
 
 function App() {
   // setting up theme
-  const theme = useContext(ThemeContext)
+  const [{ theme, isDark}, toggleTheme] = useContext(ThemeContext)
   console.log("theme", theme)
+
   return (
-    <main className="App">
+    <main className="App" style={{backgroundColor: theme.backgroundColor, color: theme.color}}>
+      <div className="text">It's a {isDark ? 'Dark' : 'Light'} theme</div>
+      <button onClick={toggleTheme}>Toggle Theme</button>
       <Registration />
     </main>
   );
